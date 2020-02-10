@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 
 const Todo = props =>{
     return (
-       <div 
-       onClick={props.togglePurchased}
-       className={`todo${props.todo.purchased ? 'purchased' : ""}`}
-       >
-       <p>{props.todo.name}</p>
-       </div>
-    );
+        <div
+          className={`item${props.item.purchased ? ' purchased' : ''}`}
+          onClick={() => props.toggleItem(props.item.id)}
+        >
+          <p>{props.item.name}</p>
+        </div>
+      );
 };
 
 export default Todo;
