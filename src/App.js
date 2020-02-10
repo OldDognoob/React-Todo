@@ -1,60 +1,77 @@
-import React from 'react';
+import React from "react";
 
-import TodoForm from './components/TodoComponents/TodoForm';
-import TodoList from './components/TodoComponents/TodoList';
+import TodoList from "./components/TodoComponents/TodoList";
+import TodoForm from "./components/TodoComponents/TodoForm";
 
-
-const todosList =[
+const groceriesData = [
   {
-    task: 'Organize Garage',
+    task: "Organize Garage",
     id: 1528817077286,
     completed: false
   },
   {
-    task: 'Bake Cookies',
+    task: "Bake Cookies",
     id: 1528817084358,
     completed: false
   }
 ];
 
-
-
-
 class App extends React.Component {
-  // you will need a place to store your state in this component.
-  // design `App` to be the parent component of your application.
-  // this component is going to take care of state, and any change handlers you need to work with your state
-   constructor(){
-     super();
-     this.state={
-       //the state in class component has a key in todoList that is the value of all the todos
-       todos: todosList,
-       name:""
-
-     };
-   }
-
-   togglePurchased=() =>{
-     const newTodoList = {
-       ...this.state,
-       todosList: ''
-     };
-   };
-
-   //add a new item
-
-
+  constructor() {
+    super();
+    this.state = {
+      name: "",
+      groceries: groceriesData
+    };
+  }
+  toggleItem = id => {
+    this.setState({
+      groceries: this.state.groceries.map(item => {
+        if(item.id === id) {
+          return {
+            ...item,
+            purchased: !item.purchased
+          };
+        }else{
+          return item;
+        }
+      })
+    });
+  };
 
 
+  addItem=itemName=>{
+    const newItem = {
+      name:itemName,
+      id:Date.now(),
+      purchased: false
+    };
+    this.setState({
+      groceries:[...this.state.groceries, newItem]
+    });
+  };
 
+  clearPurchased=()=>{
+    this.setState({
+      groceries:this.state.groceries.filter(item =>!item.purchased)
+    });
+  };
 
 
   render() {
-    return (
-      <div>
-        <h2>Welcome to your Todo App!</h2>
+    return(
+      <div className="App">
+        <div className="header">
+          <h1>Welcome to my Todo List</h1>
+          <TodoForm addItem={this.addItem}/>
+        </div>
+        <TodoList 
+        groceries={this.state.groceries}
+        toggleItem={this.toggleItem}
+        clearPurchased={this.clearPurchased}
+        />
       </div>
-    );
+    )
   }
 }
 
