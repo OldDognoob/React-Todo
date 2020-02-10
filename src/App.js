@@ -3,6 +3,8 @@ import React from "react";
 import TodoList from "./components/TodoComponents/TodoList";
 import TodoForm from "./components/TodoComponents/TodoForm";
 
+import './components/TodoComponents/Todo.css';
+
 const groceriesData = [
   {
     task: "Organize Garage",
@@ -25,6 +27,7 @@ class App extends React.Component {
     };
   }
   toggleItem = id => {
+    console.log(id);
     this.setState({
       groceries: this.state.groceries.map(item => {
         if(item.id === id) {
@@ -71,8 +74,9 @@ class App extends React.Component {
         clearPurchased={this.clearPurchased}
         />
       </div>
-    )
+    );
   }
 }
 
 export default App;
+
