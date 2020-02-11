@@ -16,6 +16,7 @@ class TodoForm extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault();
+         // prevents the event of a click from refreshing the page
         this.props.addItem(this.state.item);
     };
 

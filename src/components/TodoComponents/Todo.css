@@ -42,7 +42,7 @@ h1 {
   color: black;
 }
 
-.shopping-list {
+.todo-list {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
@@ -50,7 +50,7 @@ h1 {
   margin: 0 auto;
 }
 .item {
-  background-color: #55819e;
+  background-color: #3fa3e6;
   width: 45%;
   text-align: left;
   margin: 4px 0;
@@ -59,7 +59,7 @@ h1 {
 }
 
 .item.purchased {
-  background-color: #98c5e2;
+  background-color: #71b5e2;
   text-decoration: line-through;
 }
 form {
@@ -80,7 +80,7 @@ form > input {
 }
 
 button {
-  background-color: #e67744;
+  background-color: #c644e6;
   border: 1px solid black;
   border-radius: 5px;
   color: white;
@@ -91,8 +91,8 @@ button {
 }
 
 input::placeholder {
-  color: #928787;
-  background-color: #cbcbd1;
+  color: #a87f7f;
+  background-color: #5d90d1;
   opacity: 1;
   text-align: center;
 }
