@@ -8,6 +8,74 @@ import './components/TodoComponents/Todo.css';
 
 import uuid from 'uuid';
 
+
+class App extends React.Component {
+  constructor(){
+    super();
+    this.state={
+      todos: [
+        {
+          task: 'Organize Garage',
+          id: 1528817077286,
+          completed: false
+        },
+        {
+          task: 'Bake Cookies',
+          id: 1528817084358,
+          completed: false
+        }
+      ],
+      newTodo: ""
+    };
+  }
+
+  render(){
+    return (
+      <div>
+        <h2>Welcome to your Todo App</h2>
+      </div>
+    );
+  }
+}
+
+export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // const groceriesData = [
 //   {
 //     task: "Organize Garage",
@@ -108,124 +176,124 @@ import uuid from 'uuid';
 
 // export default App;
 
-const initialTodos = [
-  {
-    task: 'Organize Garage',
-    id: uuid(),
-    completed: false
-  },
-  {
-    task: 'Bake Cookies',
-    id: uuid(),
-    completed: false
-  }
-];
+// const initialTodos = [
+//   {
+//     task: 'Organize Garage',
+//     id: uuid(),
+//     completed: false
+//   },
+//   {
+//     task: 'Bake Cookies',
+//     id: uuid(),
+//     completed: false
+//   }
+// ];
 
 
-// make a function that behaves like axios.
-  const fakeTodosEndpoint = () =>{
-    return Promise.resolve(initialTodos);
-  };
+// // make a function that behaves like axios.
+//   const fakeTodosEndpoint = () =>{
+//     return Promise.resolve(initialTodos);
+//   };
 
-class App extends React.Component {
-  //declare a construction function
-  constructor(props){
-    //when we subclass a class to another class we need to call the super to run the parent constructor passing the food (props)
-    super(props);
+// class App extends React.Component {
+//   //declare a construction function
+//   constructor(props){
+//     //when we subclass a class to another class we need to call the super to run the parent constructor passing the food (props)
+//     super(props);
    
-    //here we re-rendering components and getting updated JSX.
-    this.state ={
-      todos: [],
-      newTodoTitle: '',
-    }
-  }
+//     //here we re-rendering components and getting updated JSX.
+//     this.state ={
+//       todos: [],
+//       newTodoTitle: '',
+//     }
+//   }
 
-  componentDidMount() {
-    fakeTodosEndpoint()
-    .then(todos => {
-      //the setState is a function for using all the slices of state
-      //with a cb and it will return a new object
-      //(oldState=this.state)
-      this.setState(oldState =>{
-        return {
-          todos: oldState.todos.concat(todos)
-        }
-      })
-    })
-  }
+//   componentDidMount() {
+//     fakeTodosEndpoint()
+//     .then(todos => {
+//       //the setState is a function for using all the slices of state
+//       //with a cb and it will return a new object
+//       //(oldState=this.state)
+//       this.setState(oldState =>{
+//         return {
+//           todos: oldState.todos.concat(todos)
+//         }
+//       })
+//     })
+//   }
 
-  // WHAT IS THE REASON OF THIS FUNCTION ? WHAT IS DOING THIS FUNCTION?
-  // onNewTaskInputChange = event =>{
-  //   // console.log('hit it Baby!!!');
-  //   this.setState(oldState => {
-  //     const newValue = event.target.value;
-  //     return {
-  //       newTodoTitle: newValue,
-  //     } 
-  //   })
-  // }
+//   // WHAT IS THE REASON OF THIS FUNCTION ? WHAT IS DOING THIS FUNCTION?
+//   // onNewTaskInputChange = event =>{
+//   //   // console.log('hit it Baby!!!');
+//   //   this.setState(oldState => {
+//   //     const newValue = event.target.value;
+//   //     return {
+//   //       newTodoTitle: newValue,
+//   //     } 
+//   //   })
+//   // }
 
  
-  onTodoAdd = event => {
-    // console.log('adding a todo');
-    // add an item from the form to our list
-    console.log('adding todo');
-    event.target.value="";
-    this.setState(oldState =>{
-      return {
-        newTodoValue:"",
-        todos: oldState.todos.concat({
-          completed: false,
-          id: uuid(),
-          task: oldState.newTodoTitle
-        })
-      };
-    });
-  };
+//   onTodoAdd = event => {
+//     // console.log('adding a todo');
+//     // add an item from the form to our list
+//     console.log('adding todo');
+//     event.target.value="";
+//     this.setState(oldState =>{
+//       return {
+//         newTodoValue:"",
+//         todos: oldState.todos.concat({
+//           completed: false,
+//           id: uuid(),
+//           task: oldState.newTodoTitle
+//         })
+//       };
+//     });
+//   };
 
-markCompleted=id=>{
-  this.setState(oldState =>{
-    return{
-      todos:oldState.todos.map(todo =>{
-        if(todo.id === id){
+// markCompleted=id=>{
+//   this.setState(oldState =>{
+//     return{
+//       todos:oldState.todos.map(todo =>{
+//         if(todo.id === id){
          
-          return {
-            ...todo,
-            completed:true,
-          };
-        }
-        return todo;
-      })
-    };
-  });
-};
+//           return {
+//             ...todo,
+//             completed:true,
+//           };
+//         }
+//         return todo;
+//       })
+//     };
+//   });
+// };
 
- clearCompleted =event =>{
-   this.setState(oldState => {
-     return{
-      todos: oldState.todos.filter(todo => todo.completed === false)
-     };
-   });
- };
+//  clearCompleted =event =>{
+//    this.setState(oldState => {
+//      return{
+//       todos: oldState.todos.filter(todo => todo.completed === false)
+//      };
+//    });
+//  };
 
 
-  render(){
-    return(
-      <div>
-        <TodoList 
-         todos={this.state.todos}
-         markCompleted={this.markCompleted}
-         />
+//   render(){
+//     return(
+//       <div>
+//         <TodoList 
+//          todos={this.state.todos}
+//          markCompleted={this.markCompleted}
+//          />
 
-        <TodoForm 
-        todos={this.state.todos}
-        clearCompleted={this.clearCompleted}
-        addTodo={this.addTodo}
-        valueChange={this.valueChange}
-        />
-      </div>
-    );
-  } 
-}
+//         <TodoForm 
+//         todos={this.state.todos}
+//         clearCompleted={this.clearCompleted}
+//         addTodo={this.addTodo}
+//         valueChange={this.valueChange}
+//         />
+//       </div>
+//     );
+//   } 
+// }
 
-export default App;
+// export default App;
