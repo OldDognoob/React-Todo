@@ -1,3 +1,34 @@
+import React, {Component} from 'react';
+
+export default class Todo extends Component {
+  render () {
+    return (
+      <li id={this.props.todo.id} 
+      className={`todo-item ${this.props.todo.completed ? `complete` : null}` } onClick={this.props.handleComplete}>
+      {this.props.todo.task}
+      </li>
+
+    );
+    
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // import React from "react";
 
 // const Todo = props =>{
@@ -18,21 +49,21 @@
 
 // export default Todo;
 
-import React, {Component} from  'react';
+// import React, {Component} from  'react';
 
-class Todo extends Component {
-  render(){
-    const color = this.props.todo.completed ? 'pink' : 'blue';
-    return(
-      <div key={this.props.todo.id}>{this.props.todo.task}
-      <button onClick={this.props.markCompleted}>check</button>
+// class Todo extends Component {
+//   render(){
+   
+//     return(
+//       <div key={this.props.todo.id}>{this.props.todo.task}
+//       <button onClick={this.props.markCompleted}>check</button>
   
-      </div>
-    )
-  }
-}
+//       </div>
+//     )
+//   }
+// }
 
-export default Todo;
+// export default Todo;
 
 // class Todo extends Component {
 //   return(){

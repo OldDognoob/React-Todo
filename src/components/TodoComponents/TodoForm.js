@@ -41,17 +41,41 @@
 
 import React, {Component} from 'react';
 
-class TodoForm extends Component {
-    render(){
-        return(
-            <div>
-                <input onChange={this.props.valueChange}></input>
-                <button onClick={this.props.addTodo}>Add Todo</button>
-                <button onClick={this.props.clearCompleted}>Clear Completed</button>
-               
-            </div>
-        )
-    }
+
+export default class TodoForm extends Component {
+  render() {
+    return <div>
+
+      <form>
+        <input 
+        type="text" 
+        placeholder="enter your todo here"
+        onChange={this.props.handleChange}
+        value={this.props.newTodo}
+         />
+        <button onClick={this.props.handleAdd}>
+           Add Todo
+        </button>
+        <button onClick={this.props.handleClear}>
+          Clear Completed
+        </button>
+      </form>
+    </div>
+  }
 }
 
-export default TodoForm;
+
+// class TodoForm extends Component {
+//     render(){
+//         return(
+//             <div>
+//                 <input onChange={this.props.valueChange}></input>
+//                 <button onClick={this.props.addTodo}>Add Todo</button>
+//                 <button onClick={this.props.clearCompleted}>Clear Completed</button>
+               
+//             </div>
+//         )
+//     }
+// }
+
+// export default TodoForm;
