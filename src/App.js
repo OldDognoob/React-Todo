@@ -13,20 +13,13 @@ class App extends React.Component {
   constructor(){
     super();
     this.state={
-      todos: [
-        {
-          task: 'Organize Garage',
-          id: 1528817077286,
-          completed: false
-        },
-        {
-          task: 'Bake Cookies',
-          id: 1528817084358,
-          completed: false
-        }
-      ],
+      todos: JSON.parse(window.localStorage.getItem("todos")),
       newTodo: ""
     };
+  }
+
+  componentDidUpdate(){
+    window.localStorage.setItem("todos", JSON.stringify(this.state.todos));
   }
 
   handleAdd = (e) => {
@@ -41,6 +34,7 @@ class App extends React.Component {
     todos:this.state.todos.concat(todoToBeAdded),
     newTodo: ""
   })
+ 
   };
 
   handleComplete = (e) => {
