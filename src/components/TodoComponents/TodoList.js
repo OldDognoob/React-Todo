@@ -31,12 +31,27 @@ import Todo from "./Todo";
 
 // export default TodoList;
 
-const TodoList = props =>{
+// const TodoList = props =>{
+//   console.log(props);
+//   return(
+//     <div className="todo-list">
+//       {props.todos.map(todo=>{
+//         return <Todo todo={todo}  key={todo.id}  markCompleted={props.markCompleted} />
+//       })}
+//     </div>
+//   );
+// };
+
+// export default TodoList;
+
+
+
+const TodoList = props => {
   console.log(props);
-  return(
-    <div className="todo-list">
-      {props.todos.map(todo=>{
-        return <Todo todo={todo}  key={todo.id}  markCompleted={props.markCompleted} />
+  return (
+    <div className="shopping-list">
+      {props.taskItems.map(item => {
+        return <Todo key={item.id} toggleItem={props.toggleItem} item={item} />;
       })}
     </div>
   );

@@ -1,4 +1,4 @@
-// import React from "react";
+import React, {Component} from "react";
 
 // const Todo = props =>{
 //     return (
@@ -18,13 +18,13 @@
 
 // export default Todo;
 
-import React, {Component} from  'react';
+// import React, {Component} from  'react';
 
 class Todo extends Component {
   render(){
     const color = this.props.todo.completed ? 'pink' : 'blue';
     return(
-      <div key={this.props.todo.id}>{this.props.todo.task}
+      <div key={props.todo.id}>{this.props.todo.task}
       <button onClick={this.props.markCompleted}>check</button>
   
       </div>
@@ -46,3 +46,18 @@ export default Todo;
 // };
 
 // export default Todo;
+
+// import React from "react";
+
+// const TodoItem = props => {
+//   return (
+//     <div
+//       className={`item${props.item.completed ? " completed" : ""}`}
+//       onClick={() => props.markCompleted(props.item.id)}
+//     >
+//       <p>{props.item.task}</p>
+//     </div>
+//   );
+// };
+
+// export default TodoItem;
