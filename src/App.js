@@ -29,11 +29,58 @@ class App extends React.Component {
     };
   }
 
+  handleAdd = (e) => {
+  e.preventDefault();
+  if(this.state.newTodo === "")return
+  const todoToBeAdded ={
+    id:Date.now(),
+    completed: false,
+    task:this.state.newTodo
+  }
+  this.setState({
+    todos:this.state.todos.concat(todoToBeAdded),
+    newTodo: ""
+  })
+  };
+
+  handleComplete = (e) => {
+    const id = Number(e.target.id)
+    this.setState({
+      todos: this.state.todos.map(todo =>{
+        if (todo.id === id)
+         todo.completed = !todo.completed
+        return todo
+      })
+    })
+  };
+
+  handleChange = (e) => {
+   this.setState({
+     newTodo: e.target.value
+   })
+  };
+
+  handleClear = (e) =>{
+    e.preventDefault();
+  }
+
   render(){
     return (
+      <>
       <div>
         <h2>Welcome to your Todo App</h2>
       </div>
+      <TodoList
+      todos={this.state.todos}
+      handleComplete={this.handleComplete}
+      />
+      <TodoForm  
+      handleChange={this.handleChange} 
+      newTodo={this.state.newTodo}
+      handleAdd={this.handleAdd}
+      handleClear={this.handleClear}
+      />
+      </>
     );
   }
 }
