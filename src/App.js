@@ -6,7 +6,7 @@ import TodoForm from "./components/TodoComponents/TodoForm";
 
 import './components/TodoComponents/Todo.css';
 
-import uuid from 'uuid';
+
 
 
 class App extends React.Component {
@@ -62,7 +62,10 @@ class App extends React.Component {
 
   handleClear = (e) =>{
     e.preventDefault();
-  }
+    this.setState({
+      todos: this.state.todos.filter(todo =>todo.completed === false)
+    })
+  };
 
   render(){
     return (

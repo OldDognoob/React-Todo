@@ -4,7 +4,9 @@ export default class Todo extends Component {
   render () {
     return (
       <li id={this.props.todo.id} 
-      className={`todo-item ${this.props.todo.completed ? `complete` : null}` } onClick={this.props.handleComplete}>
+      className={`item${this.props.todo.completed ? " complete" : ""}`} 
+      onClick={this.props.handleComplete}
+      >
       {this.props.todo.task}
       </li>
 
