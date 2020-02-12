@@ -153,29 +153,77 @@ class App extends React.Component {
       })
     })
   }
+
+  // WHAT IS THE REASON OF THIS FUNCTION ? WHAT IS DOING THIS FUNCTION?
+  // onNewTaskInputChange = event =>{
+  //   // console.log('hit it Baby!!!');
+  //   this.setState(oldState => {
+  //     const newValue = event.target.value;
+  //     return {
+  //       newTodoTitle: newValue,
+  //     } 
+  //   })
+  // }
+
+ 
+  onTodoAdd = event => {
+    // console.log('adding a todo');
+    // add an item from the form to our list
+    console.log('adding todo');
+    event.target.value="";
+    this.setState(oldState =>{
+      return {
+        newTodoValue:"",
+        todos: oldState.todos.concat({
+          completed: false,
+          id: uuid(),
+          task: oldState.newTodoTitle
+        })
+      };
+    });
+  };
+
+markCompleted=id=>{
+  this.setState(oldState =>{
+    return{
+      todos:oldState.todos.map(todo =>{
+        if(todo.id === id){
+         
+          return {
+            ...todo,
+            completed:true,
+          };
+        }
+        return todo;
+      })
+    };
+  });
+};
+
+ clearCompleted =event =>{
+   this.setState(oldState => {
+     return{
+      todos: oldState.todos.filter(todo => todo.completed === false)
+     };
+   });
+ };
+
+
   render(){
     return(
-      <>
-      <div className="TodoList">
-        {this.state.todos.map(todo=>{ // from this.state we got the todos
-          return (
-            <div 
-            className="Todo"
-            key={todo.id}
-            >
-            {todo.task}
-            </div>
-          );
-        })}
-      </div>
-      <div className="TodoForm">
-        <input 
-        type="text" 
-        placeholder="Add a task"
-        />
+      <div>
+        <TodoList 
+         todos={this.state.todos}
+         markCompleted={this.markCompleted}
+         />
 
+        <TodoForm 
+        todos={this.state.todos}
+        clearCompleted={this.clearCompleted}
+        addTodo={this.addTodo}
+        valueChange={this.valueChange}
+        />
       </div>
-      </>
     );
   } 
 }
